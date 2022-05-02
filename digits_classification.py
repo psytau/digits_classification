@@ -10,7 +10,6 @@ from sklearn.model_selection import train_test_split
 from joblib import dump, load
 
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
-import cv2
 
 n_samples = len(x_train)
 print("samples size", n_samples)
