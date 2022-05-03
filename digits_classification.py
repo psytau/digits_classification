@@ -19,6 +19,6 @@ y_training_data = y_train[:n_samples]
 
 clf = svm.SVC(gamma=0.001, cache_size=3000, verbose=True)
 clf.fit(x_training_data, y_training_data)
-if (not os.path.exists('./data')):
-  os.makedirs('./data')
-dump(clf, './data/digitsClassification.joblib')
+#if (not os.path.exists('/outputs/data')):
+#  os.makedirs('/outputs/data')
+dump(clf, '/outputs/digitsClassification.joblib')
