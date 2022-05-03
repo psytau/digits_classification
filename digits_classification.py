@@ -1,4 +1,5 @@
 import tensorflow as tf
+import os
 mnist_data = tf.keras.datasets.mnist.load_data
 
 # Standard scientific Python imports
@@ -11,10 +12,13 @@ from joblib import dump, load
 
 (x_train, y_train), (x_test, y_test) = tf.keras.datasets.mnist.load_data()
 
-n_samples = len(x_train)
+n_samples = 500 #len(x_train)
 print("samples size", n_samples)
-x_training_data = x_train.reshape((n_samples, -1))
+x_training_data = x_train[:n_samples].reshape((n_samples, -1))
+y_training_data = y_train[:n_samples]
 
 clf = svm.SVC(gamma=0.001, cache_size=3000, verbose=True)
-clf.fit(x_training_data, y_train)
-dump(clf, 'outputs/digitsClassification.joblib')
+clf.fit(x_training_data, y_training_data)
+if (not os.path.exists('./outputs')):
+  os.makedirs('./outputs')
+dump(clf, './outputs/digitsClassification.joblib')
